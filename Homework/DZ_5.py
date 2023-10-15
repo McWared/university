@@ -5,7 +5,7 @@ def a_check (a):
     if a==0:
         raise ValueError
 
-def coefficients (a, b, c):
+def coefficients ():
 
     try:
         a = float(input("a = "))
@@ -19,7 +19,7 @@ def coefficients (a, b, c):
     else:
         print (f"{a}x^2 + {b}x + {c}")
 
-coefficients(1,1,1)
+coefficients()
 
 # Файл 8, номер 9
 
@@ -29,7 +29,7 @@ def x_check(x):
     if x < 0:
         raise ValueError("'x' must be greater then 0")
 
-def root(x):
+def root():
 
     try:
         x = float(input("x = "))
@@ -40,7 +40,7 @@ def root(x):
     else:
         print ("Result =", result)
 
-root(1)
+root()
 
 # Файл 8, номер 11
 
@@ -61,7 +61,7 @@ def side_check (side1, side2, side3):
         raise ValueError("triangle doesnt exist")
 
     
-def triangle_area (side1, side2, side3):
+def triangle_area ():
 
     try:
         side1 = float(input("Side 1 = "))
@@ -79,4 +79,4 @@ def triangle_area (side1, side2, side3):
     else:
         print ("Area of this triangle =", area)
 
-triangle_area(1, 1, 1)
+triangle_area()
