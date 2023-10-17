@@ -12,7 +12,7 @@ f(x) function calculates the expression
 """
 def f(x):
     
-    result = math.cos(22.55) - 2 * math.pi + \
+    result = math.cos(22/55) - 2 * math.pi + \
     54 * math.e * 13 / ((x - 4) * (x + 10)) - \
     11 * math.cos(x + 9) + 13 / (x - 5)
 
