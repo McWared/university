@@ -45,8 +45,8 @@ def main():
         print (f"result =", result)
 
     except KeyboardInterrupt:
-        print ("you aborted the programm")
-    except Exception:
+        print ("\nyou aborted the programm")
+    except ValueError:
         print ("wrong input")
 
 main()
