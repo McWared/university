@@ -44,9 +44,7 @@ def main():
         print (f"for x = {x:.6f}")
         print (f"result =", result)
 
-    except KeyboardInterrupt:
-        print ("\nyou aborted the programm")
-    except ValueError:
+    except (ValueError, EOFError):
         print ("wrong input")
 
 main()
