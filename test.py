@@ -1,6 +1,9 @@
-index = 0
-a = 123456789
-while index < 10:
-    a= a // 10
-    index += 1
-    print(a)
+def sir (m:int) -> int:
+
+    f2, f1 = 0, 1
+
+    while f1 < m:
+        f2, f1 = f1, f1 + f2
+    print(f1)
+
+sir(9)
