@@ -47,6 +47,6 @@ def main():
     except (ValueError, EOFError):
         print ("wrong input")
     except KeyboardInterrupt:
-        print ("You finished the program")
+        print ("\nYou finished the program")
 
 main()
