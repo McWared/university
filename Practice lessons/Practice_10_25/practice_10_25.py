@@ -41,23 +41,3 @@ def sir (m:int) -> int:
     print(f1)
 
 sir(9)
-
-# Файл 12, номер 36
-
-"""
-Знайти кількість п'ятизначних чисел, у десятковому запису яких є цифра b.
-nums = [10000 - 99999] len(nums) = 90000
-"""
-
-def find(b: int) -> int:
-    
-    counter = 0
-
-    for i in range (10000, 100000):
-        i = str(i)
-        b = str(b)
-        if b in i:
-            counter += 1
-    print(counter)
-
-find(1)
