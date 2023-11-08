@@ -16,7 +16,7 @@ def s(x: float, eps: float) -> float:
         x (float): The value for which the expression is calculated.
         eps (float): The desired accuracy of the calculation.
     """
-    a = -x
+    a = 1
     s = a
     n = 1
     n = n * n
