@@ -19,8 +19,9 @@ def s(x: float, eps: float) -> float:
     a = 1
     s = a
     n = 1
-    while a >= eps or -a <= -eps:                      # while -eps <= a >= eps:
-        a *= -x / n*n
+    n2 = n * n
+    while a >= eps or a <= -eps:
+        a *= -x / n2
         s += a
         n += 1
     return s
@@ -33,7 +34,7 @@ def _domain_x(x: float) -> bool:
         x (float): The input value to be checked against the domain.
     """
     if x > B or x < A:
-        raise ValueError("x is out of domain")
+        raise ValueError(f"x is out of range [{A}, {B}].")
 
 def _domain_eps(eps: float) -> bool:
     """
@@ -43,7 +44,7 @@ def _domain_eps(eps: float) -> bool:
         eps (float): The value of eps to be checked.
     """
     if eps <= 0:
-        raise ValueError("eps is less than 0 or equal to 0")
+        raise ValueError("eps is less than 0 or equal to 0.")
 
 
 def main() -> float:
@@ -67,7 +68,7 @@ def main() -> float:
         print (f"for eps = {eps:.7E}")
         print (f"result = {result:.11f}")
 
-    except (ValueError, EOFError) as e_mes:
+    except (EOFError, ValueError) as e_mes:
         print("***** error")
         print("The reason is:", e_mes)
 
