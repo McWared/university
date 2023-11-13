@@ -42,7 +42,7 @@ def _read_eps() -> float:
 
     return eps
 
-def _domain_x(x: float) -> bool:
+def _domain_x(x: float):
     """
     Check if the input value `x` is within the specified domain.
 
@@ -52,7 +52,7 @@ def _domain_x(x: float) -> bool:
     if x > B or x < A:
         raise ValueError(f"x is out of range [{A}, {B}].")
 
-def _domain_eps(eps: float) -> bool:
+def _domain_eps(eps: float):
     """
     Check if the input `eps` is less than or equal to zero.
 
