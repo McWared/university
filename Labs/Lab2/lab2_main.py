@@ -1,3 +1,6 @@
+"""
+This programm calculates the value of the series by given x and eps (accuracy).
+"""
 A = 0
 B = 1
 
@@ -19,8 +22,8 @@ def s(x: float, eps: float) -> float:
     a = 1
     s = a
     n = 1
-    n2 = n * n
-    while a >= eps or a <= -eps:
+    while a > eps or a < -eps:
+        n2 = n * n
         a *= -x / n2
         s += a
         n += 1
