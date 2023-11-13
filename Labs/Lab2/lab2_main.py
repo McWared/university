@@ -26,15 +26,21 @@ def s(x: float, eps: float) -> float:
         n += 1
     return s
 
-def read_values() -> (float, float):
+def _read_x() -> float:
     """
-    Prompts the user to enter values for `x` and `eps` and returns them.
+    Prompts the user to enter value for `x` and return it.
     """
-
     x = float(input(f"Enter x from [{A}, {B}]: "))
+
+    return x
+
+def _read_eps() -> float:
+    """
+    Prompts the user to enter value for `eps` and returns it.
+    """
     eps = float(input("Enter eps > 0: "))
 
-    return x, eps
+    return eps
 
 def _domain_x(x: float) -> bool:
     """
@@ -61,12 +67,12 @@ def main() -> float:
     """
     Gathers all auxiliary functions together and does exception checking
     """
-
     _info_about_me()
 
     try:
-        x, eps = read_values()
+        x = _read_x()
         _domain_x(x)
+        eps = _read_eps()
         _domain_eps(eps)
 
         print ("***** do calculations ...", end=" ")
