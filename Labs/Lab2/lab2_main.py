@@ -26,6 +26,13 @@ def s(x: float, eps: float) -> float:
         n += 1
     return s
 
+def read_values() -> (float,float):
+
+    x = float(input(f"Enter x from [{A}, {B}]: "))
+    eps = float(input("Enter eps > 0: "))
+
+    return x, eps
+
 def _domain_x(x: float) -> bool:
     """
     Check if the input value `x` is within the specified domain.
@@ -55,9 +62,8 @@ def main() -> float:
     _info_about_me()
 
     try:
-        x = float(input(f"Enter x from [{A}, {B}]: "))
+        x, eps = read_values()
         _domain_x(x)
-        eps = float(input("Enter eps > 0: "))
         _domain_eps(eps)
 
         print ("***** do calculations ...", end=" ")
@@ -68,9 +74,11 @@ def main() -> float:
         print (f"for eps = {eps:.7E}")
         print (f"result = {result:.11f}")
 
-    except (EOFError, ValueError) as e_mes:
+    except ValueError as e_mes:
         print("***** error")
         print("The reason is:", e_mes)
+    except EOFError as e_mes:
+        print("\n***** error")
 
 try:
     main()
