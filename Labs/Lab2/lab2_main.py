@@ -26,7 +26,10 @@ def s(x: float, eps: float) -> float:
         n += 1
     return s
 
-def read_values() -> (float,float):
+def read_values() -> (float, float):
+    """
+    Prompts the user to enter values for `x` and `eps` and returns them.
+    """
 
     x = float(input(f"Enter x from [{A}, {B}]: "))
     eps = float(input("Enter eps > 0: "))
