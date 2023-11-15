@@ -1,6 +1,19 @@
 lst = [1,23,4,1,'privet',True,0,-192]
 intlst = [0,0,0,0,1,2,3,4,5,6,7,8,9,1]
 
+# Файл 16, номер 4
+def create () -> list:
+
+    try:
+        mylist = []
+        elem = int(input())
+
+        while True:
+            mylist.append(elem)
+            elem = int(input())
+    except (ValueError, EOFError):
+        return mylist
+
 # Файл 16, номер 8
 
 def add (lst: list, el) -> int:
