@@ -54,7 +54,7 @@ class Cat:
             self.__age = 0
 
     def astralCheck(self):
-        if self.lifes == 0:
+        if self.lifes == self.__lifesLimit:
             self.__astral = True
         if self.astral:
             self.__energy = 0
@@ -81,28 +81,77 @@ class Cat:
         self.lifeCheck()
         self.astralCheck()
 
-p = Cat()
-print(p)
-p.eat()
-print(p)
-p.catch()
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
-p.sleep(200)
-print(p)
+obj = Cat()
 
+def cat_life(obj: object):
+    obj.catch(); print(obj); obj.eat(); print(obj); obj.sleep(50); print(obj)
+
+cat_life(obj)
+
+"""17. Телевізор. Розробити клас, що моделює телевізор. Телевізор може вмикатися/вимикатися,
+переключати канали. Написати програму, що демонструє «використання» телевізору (власник
+інтерактивно керує пристроєм)."""
+
+class TV:
+
+    def __init__(self, endChannel, startChannel = 1) -> None:
+        self.__power = False
+        self.__startChannel = startChannel
+        self.__endChannel = endChannel
+        self.__currentChannel = startChannel
+
+    def __str__(self) -> str:
+        return f"Current channel: {self.currentChannel}"
+    
+    @property
+    def currentChannel(self):
+        return self.__currentChannel
+    
+    @property
+    def startChannel(self):
+        return self.__startChannel
+    
+    @property
+    def endChannel(self):
+        return self.__endChannel
+
+    @property
+    def power(self):
+        return self.__power
+
+    def switch(self):
+        self.__power = not self.__power
+
+    def changeUP(self):
+        if self.currentChannel == self.__endChannel:
+            self.__currentChannel = self.__startChannel
+        else:
+            self.__currentChannel +=1
+
+    def changeDOWN(self):
+        if self.currentChannel == self.__startChannel:
+            self.__currentChannel = self.__endChannel
+        else:
+            self.__currentChannel -=1
+    
+    @currentChannel.setter
+    def currentChannel(self, number):
+        self.__currentChannel = number
+
+p = TV(10)
+
+def intereactive(obj: object):
+    
+    obj.switch()
+    while obj.power != False:
+        inp = int(input("1 - channelUP, 2 - channelDOWN, 3 - selectChannel, 4 - switch: "))
+        if inp == 1: obj.changeUP()
+        elif inp == 2: obj.changeDOWN()
+        elif inp == 3:
+            number = int(input(f'Select your channel ({obj.startChannel} - {obj.endChannel}): '))
+            obj.currentChannel = number
+        elif inp == 4: obj.switch()
+
+        print(obj)
+
+intereactive(p)
