@@ -24,21 +24,13 @@ def matrixFill(n: int):
     """
     Filling the matrix with random numbers from the [0.25, 0.75) range
     """
-    matrix = np.empty((n, n), int)
+    matrix = np.empty((n, n))
 
-    count = 0
     for i in range(n):
         for j in range(n):
-            matrix[i, j] = count
-            count += 1
+            randomNumber = np.random.uniform(0.25, 0.75)
+            matrix[i, j] = randomNumber
     return matrix
-    # matrix = np.empty((n, n))
-
-    # for i in range(n):
-    #     for j in range(n):
-    #         randomNumber = np.random.uniform(0.25, 0.75)
-    #         matrix[i, j] = randomNumber
-    # return matrix
 
 def _isEven(n: int) -> bool:
     """
@@ -76,7 +68,7 @@ def traversal(matrix: np.ndarray):
         row_copy = row
 
         for i in range(number_of_elements):
-            print(f'{matrix[row_copy, column]}', end = ' ')
+            print(f'{matrix[row_copy, column]:.1f}', end = ' ')
             row_copy += 1
         row += 2
         column -= 1
@@ -90,7 +82,7 @@ def traversal(matrix: np.ndarray):
         column_copy = column
 
         for i in range(number_of_elements):
-            print(f'{matrix[row_copy, column_copy]}', end = ' ')
+            print(f'{matrix[row_copy, column_copy]:.1f}', end = ' ')
             row_copy -= 1
             column_copy -= 1
         row -= 2
@@ -105,7 +97,7 @@ def traversal(matrix: np.ndarray):
         column_copy = column
 
         for i in range(number_of_elements):
-            print(f'{matrix[row_copy, column_copy]}', end = ' ')
+            print(f'{matrix[row_copy, column_copy]:.1f}', end = ' ')
             row_copy -= 1
             column_copy += 1
         column += 1
