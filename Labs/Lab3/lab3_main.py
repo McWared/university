@@ -18,19 +18,27 @@ def _check_n_domain(n: int) -> ValueError:
     """
     Raises a ValueError if 'n' is does not meet the condition
     """
-    if n < 1: raise ValueError('your n less then 1')
+    if n < 0: raise ValueError('your n less then 1')
 
 def matrixFill(n: int):
     """
     Filling the matrix with random numbers from the [0.25, 0.75) range
     """
-    matrix = np.empty((n, n))
+    matrix = np.empty((n, n), int)
 
+    count = 0
     for i in range(n):
         for j in range(n):
-            randomNumber = np.random.uniform(0.25, 0.75)
-            matrix[i, j] = randomNumber
+            matrix[i, j] = count
+            count += 1
     return matrix
+    # matrix = np.empty((n, n))
+
+    # for i in range(n):
+    #     for j in range(n):
+    #         randomNumber = np.random.uniform(0.25, 0.75)
+    #         matrix[i, j] = randomNumber
+    # return matrix
 
 def _isEven(n: int) -> bool:
     """
@@ -40,9 +48,91 @@ def _isEven(n: int) -> bool:
         return True
     return False
 
-def traversal(matrix):
-    pass
+def traversal(matrix: np.ndarray):
+    n = len(matrix)    
 
+    start_row_down = 0
+    start_column_down = n - 1
+    start_number_of_elements_down = n
+
+    start_row_left = n - 2
+    start_column_left = n - 2
+
+    if _isEven(n):
+        start_row_right = (n // 2) - 1
+        start_column_right = n // 2
+        start_number_of_elements_right = (n // 2) - 1
+
+        start_number_of_elements_left = (n // 2) - 1
+    else:
+        start_row_right = (n // 2) - 1
+        start_column_right = (n // 2) + 1
+        start_number_of_elements_right = (n // 2) - 1
+
+        start_number_of_elements_left = n // 2
+
+
+    def moveDown(row, column, number_of_elements):
+        row_copy = row
+
+        for i in range(number_of_elements):
+            print(f'{matrix[row_copy, column]}', end = ' ')
+            row_copy += 1
+        row += 2
+        column -= 1
+        number_of_elements -= 4
+
+        return row, column, number_of_elements
+    
+
+    def moveLeft(row, column, number_of_elements):
+        row_copy = row
+        column_copy = column
+
+        for i in range(number_of_elements):
+            print(f'{matrix[row_copy, column_copy]}', end = ' ')
+            row_copy -= 1
+            column_copy -= 1
+        row -= 2
+        column -= 1
+        number_of_elements -= 2
+
+        return row, column, number_of_elements
+    
+
+    def moveRight(row, column, number_of_elements):
+        row_copy = row
+        column_copy = column
+
+        for i in range(number_of_elements):
+            print(f'{matrix[row_copy, column_copy]}', end = ' ')
+            row_copy -= 1
+            column_copy += 1
+        column += 1
+        number_of_elements -= 2
+        
+        return row, column, number_of_elements
+
+
+    row_down, column_down, number_of_elements_down = moveDown(start_row_down, start_column_down, start_number_of_elements_down)
+    row_left, column_left, number_of_elements_left = moveLeft(start_row_left, start_column_left, start_number_of_elements_left)
+    row_right, column_right, number_of_elements_right = moveRight(start_row_right, start_column_right, start_number_of_elements_right)
+
+    flag = True
+
+    while flag:
+        if number_of_elements_down > 0:
+            row_down, column_down, number_of_elements_down = moveDown(row_down, column_down, number_of_elements_down)
+        else:
+            flag = False
+        if number_of_elements_left > 0 and flag == True:
+            row_left, column_left, number_of_elements_left = moveLeft(row_left, column_left, number_of_elements_left)
+        else:
+            flag = False
+        if number_of_elements_right > 0 and flag == True:
+            row_right, column_right, number_of_elements_right = moveRight(row_right, column_right, number_of_elements_right)
+        else:
+            flag = False
 
 def main():
     try:
