@@ -6,7 +6,8 @@ def _info_about_me():
     """Info about author"""
 
     print("The author of this programm is Andrew Pozhylenkov Group K-10 Variant 20.")
-    print("The program prints the numbers in the given order")
+    print("The program prints the sequence of matrix elements in a spiral along the right quarter-triangle of the matrix\
+along the right quarter-triangle of the matrix in a spiral from the upper right corner of the matrix in a clockwise")
 
 
 def _input_n() -> int:
@@ -98,7 +99,7 @@ def traversal(matrix: np.ndarray):
         """
         row_copy = row
 
-        for i in range(number_of_elements):
+        for _ in range(number_of_elements):
             print(f'{matrix[row_copy, column]:.1f}', end = ' ')
             row_copy += 1
         row += 2
@@ -133,7 +134,7 @@ def traversal(matrix: np.ndarray):
         row_copy = row
         column_copy = column
 
-        for i in range(number_of_elements):
+        for _ in range(number_of_elements):
             print(f'{matrix[row_copy, column_copy]:.1f}', end = ' ')
             row_copy -= 1
             column_copy -= 1
@@ -170,7 +171,7 @@ def traversal(matrix: np.ndarray):
         row_copy = row
         column_copy = column
 
-        for i in range(number_of_elements):
+        for _ in range(number_of_elements):
             print(f'{matrix[row_copy, column_copy]:.1f}', end = ' ')
             row_copy -= 1
             column_copy += 1
@@ -180,8 +181,9 @@ def traversal(matrix: np.ndarray):
         
         return row, column, number_of_elements
     
-    
+
     n = len(matrix)
+    whole_half_n = n // 2
 
     # start_... variables used for the very first function calls
     start_row_down = 0
@@ -192,25 +194,24 @@ def traversal(matrix: np.ndarray):
     start_column_left = n - 2
 
     if _isEven(n):
-        start_row_right = (n // 2) - 1
-        start_column_right = n // 2
-        start_number_of_elements_right = (n // 2) - 1
+        start_row_right = (whole_half_n) - 1
+        start_column_right = whole_half_n
+        start_number_of_elements_right = (whole_half_n) - 1
 
-        start_number_of_elements_left = (n // 2) - 1
+        start_number_of_elements_left = (whole_half_n) - 1
     else:
-        start_row_right = (n // 2) - 1
-        start_column_right = (n // 2) + 1
-        start_number_of_elements_right = (n // 2) - 1
+        start_row_right = (whole_half_n) - 1
+        start_column_right = (whole_half_n) + 1
+        start_number_of_elements_right = (whole_half_n) - 1
 
-        start_number_of_elements_left = n // 2
+        start_number_of_elements_left = whole_half_n
 
     #This assignment of 3 variables is the trick that i used, after first execution functions runs from this variables in the loop
     row_down, column_down, number_of_elements_down = moveDown(start_row_down, start_column_down, start_number_of_elements_down)
     row_left, column_left, number_of_elements_left = moveLeft(start_row_left, start_column_left, start_number_of_elements_left)
     row_right, column_right, number_of_elements_right = moveRight(start_row_right, start_column_right, start_number_of_elements_right)
 
-    #Flag variable created for helping ending the loop, when 'number_of_elements' of one of the functions is less then 1, it means
-    #that it is the end, there is no more elements in matrix to print!
+    #Flag variable created for helping ending the loop, when 'number_of_elements' of one of the functions is less then 1
     flag = True
 
     while flag:
@@ -257,6 +258,8 @@ try:
 except KeyboardInterrupt as e:
     print('\nprogram aborted')
 except (RuntimeError, MemoryError) as e:
+    print("***** error")
     print(f'There is problem: {e}')
 except BaseException as e:
+    print("***** error")
     print(f'\nThere are a global problem here: {e}')

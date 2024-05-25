@@ -1,0 +1,13 @@
+#/Users/andrejpozilenkov/Library/Python/3.11/lib/python/site-packages/ipykernel_launcher.py --f=/Users/andrejpozilenkov/Library/Jupyter/runtime/kernel-v2-31236txacdRhTboIH.json
+# GMT Sat May 25 19:02:02 2024
+# 
+1 2 3 4
+2 3 4
+3 4
+4
+5 6 7 8
+6 7 8
+7 8
+8
+9
+10
