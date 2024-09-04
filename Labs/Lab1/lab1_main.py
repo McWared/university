@@ -32,7 +32,8 @@ def main():
     _info_about_me()
 
     try:
-        x = float(input("Enter x (!= 4, -10, 5): "))
+        # x = float(input("Enter x (!= 4, -10, 5): "))
+        x = 10
         print ("***** do calculations ...", end=" ")
 
         if _domain(x):

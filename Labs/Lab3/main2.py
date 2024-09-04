@@ -42,7 +42,11 @@ def matrixFill(n: int) -> np.ndarray:
     np.ndarray:
         The matrix (n x n)
     """
-    matrix = np.random.uniform(0.25, 0.75, size = (n, n))
+    matrix = np.arange(n*n)
+    matrix.shape = (n, n)
+
+    # matrix = np.random.uniform(0.25, 0.75, size = (n, n))
+    print(matrix)
     return matrix
 
 
